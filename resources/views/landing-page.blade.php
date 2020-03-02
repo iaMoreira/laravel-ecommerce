@@ -17,7 +17,7 @@
 
     </head>
     <body>
-        <header class="with-background">
+        <header class="with-background" style="background: url('img/triangles.svg');">
             <div class="top-nav container">
                 <div class="logo">Laravel Ecommerce</div>
                 <ul>
@@ -38,7 +38,7 @@
                 </div> <!-- end hero-copy -->
 
                 <div class="hero-image">
-                    <img src="img/macbook-pro-laravel.png" alt="hero image">
+                    <img src="{{asset('img/macbook-pro-laravel.png')}}" alt="hero image">
                 </div> <!-- end hero-image -->
             </div> <!-- end hero -->
         </header>
@@ -65,50 +65,17 @@
                 </div> --}}
 
                 <div class="products text-center">
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
-                    <div class="product">
-                        <a href="#"><img src="/img/macbook-pro.png" alt="product"></a>
-                        <a href="#"><div class="product-name">MacBook Pro</div></a>
-                        <div class="product-price">$2499.99</div>
-                    </div>
+                    @foreach ($products as $product)
+                        <div class="product">
+                            <a href="{{ route('shop.show', $product->slug) }}"><img src="{{ asset('img/products/'.$product->slug.'.jpg') }}" alt="product"></a>
+                            <a href="{{ route('shop.show', $product->slug) }}"><div class="product-name">{{ $product->name }}</div></a>
+                            <div class="product-price">{{ $product->presentPrice() }}</div>
+                        </div>
+                    @endforeach
                 </div> <!-- end products -->
 
                 <div class="text-center button-container">
-                    <a href="#" class="button">View more products</a>
+                    <a href="{{route('shop.index')}}" class="button">View more products</a>
                 </div>
 
             </div> <!-- end container -->
@@ -123,17 +90,17 @@
 
                 <div class="blog-posts">
                     <div class="blog-post" id="blog1">
-                        <a href="#"><img src="/img/blog1.png" alt="Blog Image"></a>
+                        <a href="#"><img src="{{asset('/img/blog1.png')}}" alt="Blog Image"></a>
                         <a href="#"><h2 class="blog-title">Blog Post Title 1</h2></a>
                         <div class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, tenetur numquam ipsam reiciendis.</div>
                     </div>
                     <div class="blog-post" id="blog2">
-                        <a href="#"><img src="/img/blog2.png" alt="Blog Image"></a>
+                        <a href="#"><img src="{{asset('/img/blog2.png')}}" alt="Blog Image"></a>
                         <a href="#"><h2 class="blog-title">Blog Post Title 2</h2></a>
                         <div class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, tenetur numquam ipsam reiciendis.</div>
                     </div>
                     <div class="blog-post" id="blog3">
-                        <a href="#"><img src="/img/blog3.png" alt="Blog Image"></a>
+                        <a href="#"><img src="{{asset('/img/blog3.png')}}" alt="Blog Image"></a>
                         <a href="#"><h2 class="blog-title">Blog Post Title 3</h2></a>
                         <div class="blog-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi, tenetur numquam ipsam reiciendis.</div>
                     </div>
